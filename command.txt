@@ -1,0 +1,28 @@
+ffmpeg -f concat -safe 0 -i 2014-0-1-2023-6-17.txt \
+      -filter:v "setpts=PTS/60"  \
+      -c:v libx265 -tag:v hvc1 \
+      -s:v 640:360 \
+      -preset ultrafast \
+      -pix_fmt yuv420p \
+      output.mp4
+
+ffmpeg -f concat -safe 0 -i chunks.txt -c copy output.mp4
+
+// high quality 10 x speed
+
+ffmpeg -f concat -safe 0 -i 2014-0-1-2023-6-17.txt \
+      -s:v 1920x1080 \
+      -c:v h264_videotoolbox \
+      -framerate 30 \
+      -crf 17 \
+      2014-0-1-2023-6-17-full.mp4
+
+
+ffmpeg -f concat -safe 0 -i 2014-0-1-2023-6-17.txt \
+      -s:v 1920x1080 \
+      -c:v h264_videotoolbox \
+      -framerate 30 \
+      -crf 0 \
+      2014-0-1-2023-6-17-full-loseless.mp4
+
+ ffmpeg -f concat -safe 0 -i chunks.txt -c copy output.mp4 

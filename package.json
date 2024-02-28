@@ -1,0 +1,16 @@
+{
+  "name": "timelapse-generator",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/suncalc": "^1.9.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "exifreader": "^4.21.0",
+    "suncalc": "^1.9.0"
+  }
+}
